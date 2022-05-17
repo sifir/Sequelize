@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crear pelicula</title>
+  </head>
+  <body>
+
+    <h1>Crear Pelicula</h1>
+    <form method="POST" action="/movies/test" enctype="multipart/form-data">
+        <label for="">Title</label>
+        <input type="text" name="title">
+        <br>
+        <label for="">Rating</label>
+        <input type="number" name="rating">
+        <br>
+        <label for="">Length</label>
+        <input type="number" name="length">
+        <br>
+        <label for="">Release Date</label>
+        <input type="date" name="release_date">
+        <br>
+        <label for="">Awards</label>
+        <input type="number" name="awards">
+        <br>
+        <button type="submit">Registrar</button>
+    </form>
+  </body>
+</html>
