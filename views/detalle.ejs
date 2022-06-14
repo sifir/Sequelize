@@ -12,6 +12,9 @@
     <p>Rating: <%= pelicula.rating %>  </p>
     <p>Premios: <%= pelicula.awards %>  </p>
     <p>Duracion: <%= pelicula.lenght %>  </p>
-    <p>Fecha de estreno: <%= pelicula.release_date %>  </p>
+    <p>Fecha de estreno: <%= pelicula.release_date %>  </p> <br><br>
+    <form action="/movies/delete/<%= pelicula.id %>" method="POST">
+        <button type="submit">DELETE</button>
+    </form>
 </body>
 </html>

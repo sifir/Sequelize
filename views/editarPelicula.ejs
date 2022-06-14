@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editar pelicula</title>
+  </head>
+  <body>
+
+    <h1>Editar Pelicula</h1>
+    <form method="POST" action="/movies/edit/<%= pelicula.id %> ">
+        <label for="">Title</label>
+        <input type="text" name="title" value="<%= pelicula.title %> ">
+        <br>
+        <label for="">Rating</label>
+        <input type="number" name="rating" value="<%= pelicula.rating %>">
+        <br>
+        <label for="">Length</label>
+        <input type="number" name="length" value="<%= pelicula.length %>">
+        <br>
+        <label for="">Release Date</label>
+        <input type="date" name="release_date" value="<%= pelicula.release_date %>">
+        <br>
+        <label for="">Awards</label>
+        <input type="number" name="awards" value="<%= pelicula.awards %>">
+        <br>
+        <button type="submit">Registrar</button>
+    </form>
+  </body>
+</html>

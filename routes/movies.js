@@ -15,7 +15,10 @@ router.post('/search', moviesController.search)
 router.post('/add', moviesController.create)
 router.get('/add', moviesController.add)
 
-router.post('/test', moviesController.test)
+router.get('/edit/:id', moviesController.edit)
+router.post('/edit/:id', moviesController.update)
+
+router.post('/delete/:id', moviesController.delete)
 
 router.get('/:id', moviesController.detail)
 

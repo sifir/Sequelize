@@ -5,10 +5,10 @@ let sequelize = db.sequelize;
 let moviesController = {
     list: (req,res) => {
 
-        sequelize.query("SELECT * FROM movies")
+        db.Peliculas.findAll()
         .then( (resultados) => {
 
-            let peliculas = resultados[0]
+            let peliculas = resultados
             
             res.render("listadoDePeliculas", {peliculas: peliculas})
 
@@ -82,13 +82,13 @@ let moviesController = {
 
         console.log(req.body);
 
-        // db.Peliculas.create({
-        //     title: req.body.title,
-        //     rating: req.body.rating,
-        //     awards: req.body.awards,
-        //     release_date: req.body.release_date,
-        //     length: req.body.length
-        // })
+        db.Peliculas.create({
+            title: req.body.title,
+            rating: req.body.rating,
+            awards: req.body.awards,
+            release_date: req.body.release_date,
+            length: req.body.length
+        })
 
         res.redirect("/movies")
     },
@@ -96,6 +96,39 @@ let moviesController = {
     test: (req,res) => {
         console.log(req.body);
         res.render("test")
+    },
+
+    edit: (req,res) => {
+        db.Peliculas.findByPk(req.params.id)
+            .then((pelicula) => {
+                res.render("editarPelicula", {pelicula: pelicula})
+            })
+    },
+
+    update: (req,res) => {
+        db.Peliculas.update({
+            title: req.body.title,
+            rating: req.body.rating,
+            awards: req.body.awards,
+            release_date: req.body.release_date,
+            length: req.body.length
+        }, {
+            where: {
+                id: req.params.id
+            }
+        })
+
+        res.redirect("/movies/edit/" + req.params.id)
+    },
+
+    delete: (req,res) => {
+        //para que funcione habria que borrar tambien a los actores
+        db.Peliculas.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        res.redirect("/movies")
     }
 }
 
